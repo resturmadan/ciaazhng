@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciaazhng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('header-bg.jpg') center/cover no-repeat;
+            color: #fff;
+            padding: 150px 20px;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .header-content p {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .header-content button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.4s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        .header-content button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Section Styling */
+        section {
+            margin: 40px auto;
+            padding: 30px;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .bio h2, .gallery h2 {
+            font-size: 2em;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Gallery Styling */
+        .gallery-container {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #007bff;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ddd;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        #caption {
+            text-align: center;
+            color: #ccc;
+            margin-top: 15px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5em;
+            }
+
+            .header-content p {
+                font-size: 1em;
+            }
+
+            .header-content button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .bio h2, .gallery h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 2em;
+            }
+
+            .header-content p {
+                font-size: 0.9em;
+            }
+
+            .header-content button {
+                padding: 8px 15px;
+                font-size: 0.8em;
+            }
+
+            .bio h2, .gallery h2 {
+                font-size: 1.3em;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Ciaazhng</h1>
+            <p>Wanita cantik kelahiran tahun 2004</p>
+            <button onclick="scrollToGallery()">Explore Gallery</button>
+        </div>
+    </header>
+
+    <section class="bio">
+        <h2>About</h2>
+        <p>Orang yang santai dan suka berbagi momen-momen seru sehari-hari, membagikan hal-hal sederhana yang membuatku bahagia. Terima kasih sudah mampir ke sini!❤️</p>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>Exclusive Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="img/❤️.jpg" alt="cia" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/❤️❤.jpg" alt="ciaa" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/❤️❤️❤️.jpg" alt="ciaaa" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/cia.jpg" alt="ciaaaa" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/ciaa.jpg" alt="ciaaaaa" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="img/ciaaa.jpg" alt="ciaaaaaa" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        // Scroll to gallery section
+        function scrollToGallery() {
+            document.getElementById("gallery").scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Function to open the modal and display the clicked image
+        function openModal(image) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            const caption = document.getElementById("caption");
+
+            modal.style.display = "block";
+            modalImg.src = image.src;
+            caption.innerHTML = image.alt;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
